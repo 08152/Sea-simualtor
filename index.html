@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="theme-color" content="#061923">
+  <title>Fishing Simulator — Risky Seas</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div id="game-root">
+    <div id="loading-screen" class="screen">
+      <div class="loading-logo">FISHING <span>SIMULATOR</span></div>
+      <div class="loader-bar"><i></i></div>
+      <p id="loading-text">Lade die 3D-Welt …</p>
+    </div>
+
+    <div id="menu-screen" class="screen hidden">
+      <div class="menu-panel">
+        <div class="eyebrow">DEIN LEBEN AUF DEM MEER</div>
+        <h1>FISHING<br><span>SIMULATOR</span></h1>
+        <p class="lead">Fang Fische. Verbessere deine Ausrüstung. Finde deinen Hafen.</p>
+        <label for="player-name">Kapitänsname</label>
+        <input id="player-name" maxlength="18" autocomplete="off" placeholder="Dein Name" value="Kapitän">
+        <button id="start-button" class="primary">AUFS MEER FAHREN <span>→</span></button>
+        <button id="new-game-button" class="secondary hidden">NEUES SPIEL</button>
+        <p class="small-note">WASD · Maus · E · ESC</p>
+        <p class="menu-warning">Texturen werden aus dem Internet geladen. Bitte mit Internetverbindung starten.</p>
+      </div>
+      <div class="menu-watermark">OPEN SEA / 01</div>
+    </div>
+
+    <div id="game-ui" class="hidden">
+      <div class="topbar">
+        <div class="brand-mini">FS <span>/ RISKY SEAS</span></div>
+        <div class="player-chip"><span class="status-dot"></span><span id="hud-name">Kapitän</span></div>
+        <div class="credits-chip"><span class="coin">C</span><strong id="hud-credits">0</strong> Credits</div>
+      </div>
+      <div id="crosshair" aria-hidden="true"><i></i></div>
+      <div id="target-prompt" class="target-prompt hidden"></div>
+      <div id="toast" class="toast hidden"></div>
+      <div id="mission-card" class="mission-card">
+        <div class="mission-label">AKTUELLER AUFTRAG</div>
+        <div id="mission-text">Gehe zum Steuer in der Kajüte.</div>
+      </div>
+      <div id="boat-status" class="boat-status">BOOT · LEERLAUF</div>
+      <div id="help-bar" class="help-bar"><kbd>WASD</kbd> Gehen · <kbd>E</kbd> Interagieren · <kbd>ESC</kbd> Menü</div>
+      <div id="fishing-overlay" class="fishing-overlay hidden">
+        <div class="fishing-title">EINHOLEN</div>
+        <div class="fishing-subtitle" id="fishing-subtitle">Achte auf den Ring.</div>
+        <div id="timing-ring" class="timing-ring red"><span id="timing-ring-inner"></span></div>
+        <div class="timing-legend"><span class="red-dot"></span>zu früh <span class="yellow-dot"></span>gut <span class="green-dot"></span>sehr gut <span class="blue-dot"></span>perfekt</div>
+      </div>
+      <div id="cutting-overlay" class="cutting-overlay hidden">
+        <div class="cutting-panel">
+          <div class="cutting-top"><div><div class="mission-label">FISCHVERARBEITUNG</div><h2>Folge der Linie</h2></div><div id="cutting-stars" class="cutting-stars">☆ ☆ ☆ ☆ ☆</div></div>
+          <p>Halte die Maustaste gedrückt und fahre möglichst genau von X zu X. Das ist ein stilisiertes Geschicklichkeits-Minispiel.</p>
+          <canvas id="cutting-canvas" width="1000" height="440"></canvas>
+          <div class="cutting-bottom"><span id="cutting-progress">Bereit?</span><button id="cutting-done" class="primary small-button" disabled>FISCH FERTIG</button></div>
+        </div>
+      </div>
+      <div id="harbor-overlay" class="harbor-overlay hidden">
+        <div class="harbor-panel">
+          <div class="eyebrow">SICHERER HAFEN</div>
+          <h2 id="harbor-title">Hafen</h2>
+          <p id="harbor-description">Hier kannst du deinen Fang verkaufen und neue Köder kaufen.</p>
+          <div class="harbor-stats"><div><span>Fische an Bord</span><strong id="harbor-fish-count">0</strong></div><div><span>Credits</span><strong id="harbor-credits">0</strong></div><div><span>Köder</span><strong id="harbor-bait">Nein</strong></div></div>
+          <button id="sell-button" class="primary">FANG VERKAUFEN</button>
+          <button id="bait-button" class="secondary">KÖDER KAUFEN · 500 C</button>
+          <button id="leave-harbor-button" class="secondary">ABLEGEN</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="config.js"></script>
+  <script src="state.js"></script>
+  <script src="audio.js"></script>
+  <script src="textures.js"></script>
+  <script src="models.js"></script>
+  <script src="fish.js"></script>
+  <script src="world.js"></script>
+  <script src="boat.js"></script>
+  <script src="buoy.js"></script>
+  <script src="hand.js"></script>
+  <script src="camera.js"></script>
+  <script src="rope.js"></script>
+  <script src="scoring.js"></script>
+  <script src="economy.js"></script>
+  <script src="fishingMinigame.js"></script>
+  <script src="fishing.js"></script>
+  <script src="processing.js"></script>
+  <script src="harbor.js"></script>
+  <script src="interaction.js"></script>
+  <script src="input.js"></script>
+  <script src="hud.js"></script>
+  <script src="saveSystem.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>

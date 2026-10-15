@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap');
+:root{--navy:#061923;--deep:#031018;--panel:rgba(5,21,30,.88);--cyan:#65e2e2;--ice:#d8f3f3;--muted:#8ba7ad;--gold:#ffc65e;--purple:#bd85ff;--red:#ff4d5b;--green:#56e59b}
+*{box-sizing:border-box}
+html,body,#game-root{width:100%;height:100%;margin:0;overflow:hidden;background:var(--deep);color:#edf7f7;font-family:Inter,Arial,sans-serif}
+body{user-select:none;-webkit-user-select:none}
+#game-root{position:relative}
+#game-canvas{position:absolute;inset:0;z-index:0;display:block;width:100%;height:100%;outline:none}
+.screen{position:absolute;inset:0;z-index:50;display:flex;align-items:center;justify-content:flex-start;padding:clamp(20px,6vw,90px);background:linear-gradient(90deg,rgba(2,13,20,.96) 0%,rgba(3,19,27,.86) 42%,rgba(3,20,29,.12) 100%),linear-gradient(0deg,rgba(2,13,20,.8),transparent 45%)}
+.hidden{display:none!important}
+#loading-screen{align-items:center;justify-content:center;flex-direction:column;background:radial-gradient(ellipse at 50% 40%,#113c4a,#04121b 65%)}
+.loading-logo{font:800 clamp(32px,6vw,68px)/.95 'Barlow Condensed',sans-serif;letter-spacing:.08em;text-align:center}
+.loading-logo span{color:var(--cyan)}
+.loader-bar{width:min(290px,65vw);height:3px;background:#24404a;margin:24px 0 12px;overflow:hidden}
+.loader-bar i{display:block;height:100%;width:35%;background:var(--cyan);animation:loading 1.3s ease-in-out infinite}
+#loading-text{font-size:12px;color:#9eb8bd;letter-spacing:.12em;text-transform:uppercase}
+@keyframes loading{0%{transform:translateX(-110%)}100%{transform:translateX(330%)}}
+#menu-screen{background:linear-gradient(90deg,rgba(3,14,22,.96) 0%,rgba(4,20,29,.78) 42%,rgba(4,20,29,.05) 100%),linear-gradient(0deg,rgba(3,14,22,.85),transparent 45%)}
+.menu-panel{max-width:480px;width:100%;padding:0 0 14px}
+.eyebrow,.mission-label{font-size:10px;font-weight:700;letter-spacing:.22em;color:var(--cyan);text-transform:uppercase}
+.menu-panel h1{font:800 clamp(54px,8vw,94px)/.82 'Barlow Condensed',sans-serif;letter-spacing:-.015em;margin:20px 0 20px}
+.menu-panel h1 span{color:var(--cyan)}
+.lead{font-size:14px;line-height:1.7;color:#afc5c9;max-width:360px;margin:0 0 32px}
+label{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.12em;color:#aac2c7;margin-bottom:9px}
+input{display:block;width:min(100%,360px);border:1px solid #294653;border-radius:5px;padding:14px 15px;color:#f0fbfb;background:rgba(4,21,29,.72);font:600 15px Inter,Arial,sans-serif;outline:none;margin-bottom:13px}
+input:focus{border-color:var(--cyan);box-shadow:0 0 0 2px rgba(101,226,226,.08)}
+button{cursor:pointer;border:0;border-radius:4px;font-family:Inter,Arial,sans-serif;font-weight:700;letter-spacing:.06em;transition:transform .12s,background .15s,border-color .15s}
+button:hover{transform:translateY(-1px)}
+button:active{transform:translateY(1px)}
+.primary{width:min(100%,360px);display:flex;align-items:center;justify-content:space-between;padding:15px 17px;background:var(--cyan);color:#062027;font-size:12px;box-shadow:0 8px 28px rgba(41,192,192,.12)}
+.primary span{font-size:19px;font-weight:500}
+.secondary{width:min(100%,360px);display:block;padding:13px 16px;margin-top:10px;background:rgba(13,38,49,.85);border:1px solid #2b4c59;color:#d8eeee;font-size:11px}
+.small-note{margin-top:20px;font-size:10px;letter-spacing:.12em;color:#78939a}
+.menu-warning{max-width:360px;font-size:10px;color:#6d8b93;line-height:1.5;margin-top:32px}
+.menu-watermark{position:absolute;right:5vw;bottom:4vh;font:700 11px 'Barlow Condensed',sans-serif;letter-spacing:.3em;color:rgba(209,246,248,.5)}
+#game-ui{position:absolute;inset:0;z-index:5;pointer-events:none}
+.topbar{position:absolute;top:0;left:0;right:0;height:54px;display:flex;align-items:center;gap:22px;padding:0 22px;background:linear-gradient(180deg,rgba(1,12,18,.8),rgba(1,12,18,0));font-size:11px}
+.brand-mini{font:800 16px 'Barlow Condensed',sans-serif;letter-spacing:.1em;color:var(--cyan)}
+.brand-mini span{font:600 10px Inter,sans-serif;letter-spacing:.12em;color:#9cb8bd;margin-left:7px}
+.player-chip{display:flex;align-items:center;gap:8px;color:#e1f2f2;font-weight:600}
+.status-dot{width:6px;height:6px;border-radius:50%;background:var(--green);box-shadow:0 0 8px rgba(86,229,155,.5)}
+.credits-chip{margin-left:auto;color:#a7c3c8;display:flex;align-items:center;gap:7px}
+.credits-chip strong{color:white;font-size:15px}
+.coin{display:grid;place-items:center;border-radius:50%;height:17px;width:17px;background:var(--gold);color:#3f2b05;font-size:9px;font-weight:800}
+#crosshair{position:absolute;left:50%;top:50%;width:13px;height:13px;transform:translate(-50%,-50%);display:grid;place-items:center}
+#crosshair i{display:block;width:4px;height:4px;border-radius:50%;background:#e8ffff;box-shadow:0 0 4px #001a23,0 0 9px rgba(158,255,255,.6)}
+.target-prompt{position:absolute;left:50%;top:calc(50% + 23px);transform:translateX(-50%);padding:8px 11px;border:1px solid rgba(101,226,226,.3);border-radius:4px;background:rgba(2,15,21,.84);font-size:11px;color:#d9f9fa;white-space:nowrap}
+.target-prompt strong{color:var(--cyan);margin-right:7px}
+.toast{position:absolute;top:72px;left:50%;transform:translateX(-50%);padding:10px 15px;background:rgba(3,20,28,.9);border:1px solid #315563;border-radius:5px;font-size:12px;color:#e8ffff;box-shadow:0 8px 24px rgba(0,0,0,.24);max-width:90vw;text-align:center}
+.mission-card{position:absolute;left:22px;bottom:64px;max-width:290px;padding:12px 14px;border-left:2px solid var(--cyan);background:linear-gradient(90deg,rgba(2,18,25,.7),transparent)}
+#mission-text{font-size:12px;line-height:1.55;color:#d6e9eb;margin-top:7px}
+.boat-status{position:absolute;right:22px;bottom:66px;font:700 10px 'Barlow Condensed',sans-serif;letter-spacing:.18em;color:rgba(222,247,249,.75)}
+.help-bar{position:absolute;bottom:0;left:0;right:0;min-height:38px;display:flex;align-items:center;justify-content:center;gap:7px;background:linear-gradient(0deg,rgba(1,12,18,.9),rgba(1,12,18,.15));font-size:10px;color:#a6c0c5}
+kbd{font:700 9px Inter,sans-serif;display:inline-grid;place-items:center;border:1px solid #3a5863;border-radius:3px;color:#e8ffff;padding:3px 5px;background:rgba(10,36,46,.75);margin-left:6px}
+.fishing-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;background:radial-gradient(ellipse at 50% 52%,rgba(0,20,28,.05),rgba(0,15,23,.12))}
+.fishing-title{font:800 24px 'Barlow Condensed',sans-serif;letter-spacing:.18em;color:#e7ffff;text-shadow:0 2px 14px #001319}
+.fishing-subtitle{font-size:11px;color:#bad0d4;margin-top:4px}
+.timing-ring{--ring-size:168px;position:relative;width:var(--ring-size);height:var(--ring-size);border:10px solid var(--red);border-radius:50%;margin-top:22px;display:grid;place-items:center;box-shadow:0 0 28px rgba(255,77,91,.15);transition:border-color .06s linear}
+.timing-ring span{display:block;width:100%;height:100%;border-radius:50%;border:1px solid currentColor;opacity:.1}
+.timing-ring.red{border-color:var(--red);color:var(--red)}
+.timing-ring.yellow{border-color:#ffd24b;color:#ffd24b;box-shadow:0 0 25px rgba(255,210,75,.16)}
+.timing-ring.green{border-color:var(--green);color:var(--green);box-shadow:0 0 26px rgba(86,229,155,.2)}
+.timing-ring.blue{border-color:#6aaeff;color:#6aaeff;box-shadow:0 0 30px rgba(106,174,255,.35)}
+.timing-legend{display:flex;align-items:center;gap:9px;margin-top:20px;color:#afc8cc;font-size:10px}
+.timing-legend span{width:6px;height:6px;border-radius:50%;display:inline-block;margin-right:-5px}
+.red-dot{background:var(--red)}.yellow-dot{background:#ffd24b}.green-dot{background:var(--green)}.blue-dot{background:#6aaeff}
+.cutting-overlay{position:absolute;inset:0;background:rgba(2,14,20,.82);display:flex;align-items:center;justify-content:center;pointer-events:auto;padding:16px}
+.cutting-panel{width:min(900px,96vw);background:rgba(7,26,35,.97);border:1px solid #2a4e5c;border-radius:8px;padding:clamp(15px,3vw,28px);box-shadow:0 20px 70px rgba(0,0,0,.35)}
+.cutting-top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.cutting-top h2,.harbor-panel h2{font:800 clamp(28px,4vw,44px)/.95 'Barlow Condensed',sans-serif;margin:8px 0 0}
+.cutting-stars{color:#73888d;white-space:nowrap;font-size:clamp(15px,2.5vw,22px);letter-spacing:.03em}
+.cutting-panel p{font-size:12px;line-height:1.6;color:#9fb9be;margin:15px 0}
+#cutting-canvas{width:100%;height:auto;aspect-ratio:1000/440;display:block;background:#0c313b;border:1px solid #2c6570;border-radius:5px;touch-action:none;cursor:crosshair}
+.cutting-bottom{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:14px;font-size:11px;color:#b6cfd3}
+.small-button{width:auto;padding:12px 15px;font-size:10px;min-width:145px}
+.harbor-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(1,10,16,.68);pointer-events:auto;padding:18px}
+.harbor-panel{width:min(420px,94vw);background:rgba(5,24,33,.97);border:1px solid #315866;border-radius:7px;padding:28px;box-shadow:0 20px 70px rgba(0,0,0,.4)}
+.harbor-panel h2{font-size:42px;margin-bottom:10px}
+.harbor-panel p{font-size:12px;line-height:1.7;color:#a8c1c6}
+.harbor-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin:20px 0}
+.harbor-stats div{padding:10px;background:rgba(20,54,65,.55);border:1px solid #1b4654;border-radius:4px}
+.harbor-stats span{display:block;font-size:9px;color:#9bb7bc;margin-bottom:7px}
+.harbor-stats strong{font-size:17px;color:#f1ffff}
+.harbor-panel .primary,.harbor-panel .secondary{width:100%;justify-content:center;text-align:center}
+@media(max-width:620px){.screen{padding:22px}.menu-panel h1{font-size:58px}.topbar{padding:0 12px;gap:12px;height:48px}.brand-mini span{display:none}.player-chip{font-size:10px}.credits-chip{font-size:10px}.mission-card{left:10px;bottom:55px;max-width:225px}.boat-status{right:10px;bottom:58px;font-size:8px}.help-bar{font-size:9px;flex-wrap:wrap;padding:5px}.timing-ring{--ring-size:140px}.cutting-panel{padding:13px}.cutting-panel p{font-size:11px}.cutting-stars{font-size:14px}.harbor-panel{padding:20px}}
